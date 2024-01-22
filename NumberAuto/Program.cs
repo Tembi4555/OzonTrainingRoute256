@@ -21,34 +21,48 @@ string CheckNumberAuto(string? readData)
     if (string.IsNullOrEmpty(readData) || readData.Length < 4)
         return "-";
 
-    int countNumbers = 0;
-    int countSymbols = 0;
-
-    int number = -1;
-    string oneNumber = "";
     List<string> listWrightNumbers = new();
 
-    foreach(char s in readData)
+    while(readData.Length != 0)
     {
-        double isNumber = Char.GetNumericValue(s);
-        if(oneNumber.Length > 3)
-        {
-            listWrightNumbers.Add(oneNumber);
-            oneNumber = String.Empty;
-        }
+        if (readData.Length < 4)
+            return "-";
+        string subStr;
+        bool isOk;
 
-        //if(oneNumber.Length == 3 && )
-            
-        if (isNumber != -1.0)
+        if (readData.Length > 4)
         {
-            if(!string.IsNullOrEmpty(oneNumber) && oneNumber.Length >= 1 /*&& oneNumber.Length < 3*/)
-                oneNumber += isNumber;
+            subStr = readData.Substring(0, 5);
+            isOk = CheckString(subStr);
+            if (!isOk)
+            {
+                subStr = readData.Substring(0, 4);
+                isOk = CheckString(subStr);
+                if (!isOk)
+                    return "-";
+                else
+                {
+                    listWrightNumbers.Add(subStr);
+                    readData = readData.Remove(0, 4);
+                }
+            }
             else
-                return "-";
+            {
+                listWrightNumbers.Add(subStr);
+                readData = readData.Remove(0, 5);
+            }
         }
         else
         {
-            return "-";
+            subStr = readData.Substring(0, 4);
+            isOk = CheckString(subStr);
+            if (!isOk)
+                return "-";
+            else
+            {
+                listWrightNumbers.Add(subStr);
+                readData = readData.Remove(0, 4);
+            }
         }
     }
     string result = String.Join(" ", listWrightNumbers);
@@ -63,4 +77,31 @@ static int StringToIntMoreThanZero(string str)
         int.TryParse(str, out result);
     }
     return result;
+}
+
+bool CheckString(string checkedString)
+{
+    if(checkedString.Length == 4)
+    {
+        bool first = Char.IsLetter(checkedString[0]);
+        bool second = Char.IsNumber(checkedString[1]);
+        bool third = Char.IsLetter(checkedString[2]);
+        bool four = Char.IsLetter(checkedString[3]);
+        if(first && second && third && four)
+            return true;
+        else return false;
+    }
+    else if(checkedString.Length == 5)
+    {
+        bool first = Char.IsLetter(checkedString[0]);
+        bool second = Char.IsNumber(checkedString[1]);
+        bool third = Char.IsNumber(checkedString[2]);
+        bool four = Char.IsLetter(checkedString[3]);
+        bool five = Char.IsLetter(checkedString[4]);
+        if (first && second && third && four && five)
+            return true;
+        else return false;
+    }
+    else
+        return false;
 }
