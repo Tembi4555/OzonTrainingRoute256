@@ -7,18 +7,16 @@ if (countTest <= 0)
 }
 
 
-List<int> answerList = new List<int>();
+List<string> answerList = new List<string>();
 
 for (int i = 0; i < countTest; i++)
 {
-    
     string countWorkerString = Console.ReadLine();
     int countWorker = StringToIntMoreThanZero(countWorkerString);
-    
 
     if(countWorker <= 0)
     {
-        answerList[i] = -1;
+        answerList.Add("-1");
     }
     else
     {
@@ -26,9 +24,9 @@ for (int i = 0; i < countTest; i++)
         int maxTemper = 30;
         for (int j = 0; j < countWorker; j++)
         {
-            if (answerList.LastOrDefault() == -1)
+            if (answerList.LastOrDefault() == "-1")
             {
-                answerList.Add(-1);
+                answerList.Add("-1");
                 continue;
             }
 
@@ -36,26 +34,26 @@ for (int i = 0; i < countTest; i++)
             string[] tempArr = temperStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int temper = StringToIntMoreThanZero(tempArr[1]);
 
-            if (tempArr[0] == ">=")
+            if (tempArr[0] == ">=" && temper > minTemper)
             {
                 minTemper = temper;
             }
-            else
+            else if(tempArr[0] == "<=" && temper < maxTemper)
             {
                 maxTemper = temper;
             }
 
             if (minTemper > maxTemper)
-                answerList.Add(-1);
+                answerList.Add("-1");
             else
-                answerList.Add(minTemper);
-
+                answerList.Add(minTemper.ToString());
         }
     }
-    string result = String.Join('\n', answerList);
-    Console.WriteLine(result);
-    answerList.Clear();
+    answerList.Add(" ");
 }
+
+string result = String.Join('\n', answerList);
+Console.WriteLine(result);
 
 
 
