@@ -14,6 +14,8 @@ for (int i = 0; i < countTest; i++)
     string countWorkerString = Console.ReadLine();
     int countWorker = StringToIntMoreThanZero(countWorkerString);
 
+    
+
     if(countWorker <= 0)
     {
         answerList.Add("-1");
@@ -24,13 +26,13 @@ for (int i = 0; i < countTest; i++)
         int maxTemper = 30;
         for (int j = 0; j < countWorker; j++)
         {
+            string temperStr = Console.ReadLine();
             if (answerList.LastOrDefault() == "-1")
             {
                 answerList.Add("-1");
                 continue;
             }
 
-            string temperStr = Console.ReadLine();
             string[] tempArr = temperStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             int temper = StringToIntMoreThanZero(tempArr[1]);
 
