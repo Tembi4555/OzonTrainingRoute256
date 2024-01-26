@@ -15,41 +15,42 @@ for (int i = 0; i < countTest; i++)
     string sequenceStr = Console.ReadLine();
     string[] sequenceArr = sequenceStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
     int[] sequence = new int[sequenceArr.Length];
+    sequence[0] = StringToInt(sequenceArr[0]);
     int counter = 0;
-    int startKompr = 0;
+    int startKompr = StringToInt(sequenceArr[0]);
 
     List<int> resultKompr = new();
     for(int j = 0; j < sequenceArr.Length; j++)
     {
-        sequence[j] = StringToInt(sequenceArr[j]);
-
-        if(j == 0)
-            startKompr = sequence[j];
-        else
+        if (j != 0)
         {
-            if (sequence[j-1] - sequence[j] == 1)
+
+
+            sequence[j] = StringToInt(sequenceArr[j]);
+
+            if (sequence[j - 1] - sequence[j] == 1 && counter <= 0)
             {
                 counter--;
             }
-            else if(sequence[j - 1] - sequence[j] == -1)
+            else if (sequence[j - 1] - sequence[j] == -1 && counter >= 0)
                 counter++;
             else
             {
-                if(counter != 0)
-                {
-                    resultKompr.Add(sequence[j - 1]);
-                    
-                }
-                else
-                {
-                    resultKompr.Add(sequence[j]);
-                }
+                resultKompr.Add(startKompr);
                 resultKompr.Add(counter);
+                startKompr = sequence[j];
+
                 counter = 0;
             }
         }
+
+        if(j == sequenceArr.Length - 1)
+        {
+            resultKompr.Add(startKompr);
+            resultKompr.Add(counter);
+        }
     }
-    result += resultKompr.Count() + "\n" + String.Join(' ', resultKompr);
+    result += resultKompr.Count() + "\n" + String.Join(' ', resultKompr) + "\n";
 }
 
 Console.WriteLine(result);
