@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberAuto", "NumberAuto\Nu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionBattle", "ConditionBattle\ConditionBattle.csproj", "{779CCD46-C46B-43EF-ACC4-0FD8593EAEF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataKompression", "DataKompression\DataKompression.csproj", "{1BEFB9F8-947E-445F-BEDA-EAEA7EDFBD52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataKompression", "DataKompression\DataKompression.csproj", "{1BEFB9F8-947E-445F-BEDA-EAEA7EDFBD52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal", "Terminal\Terminal.csproj", "{77B4E21A-9E47-485E-84D9-CAD6EF16734A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1BEFB9F8-947E-445F-BEDA-EAEA7EDFBD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BEFB9F8-947E-445F-BEDA-EAEA7EDFBD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BEFB9F8-947E-445F-BEDA-EAEA7EDFBD52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B4E21A-9E47-485E-84D9-CAD6EF16734A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B4E21A-9E47-485E-84D9-CAD6EF16734A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B4E21A-9E47-485E-84D9-CAD6EF16734A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B4E21A-9E47-485E-84D9-CAD6EF16734A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
