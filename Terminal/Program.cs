@@ -58,14 +58,19 @@ for (int i = 0; i < countString; i++)
         if(symb == 'N')
         {
             coursorPosition[1]++;
+            coursorPosition[0] = 0;
             if (coursorPosition[1] < terminal.Count())
                 terminal.Insert(coursorPosition[1], String.Empty);
             else
                 terminal.Add(String.Empty);
         }
+
+        result += terminal[coursorPosition[1]].Insert(coursorPosition[0], symb.ToString());
+        //terminal[coursorPosition[1]].Insert(coursorPosition[0], symb.ToString());
     }
 
-    result += String.Join('\n', terminal) + "\n" + "-" + "\n";
+    //result += String.Join('\n', terminal) + "\n" + "-" + "\n";
+    result += "\n" + "-" + "\n";
 }
 
 
